@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up - MediWise AI</title>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #e6f2ff;
+        }
+
+        .signup-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .signup-box {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            width: 420px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .logo img {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin: 10px 0;
+            color: #2c3e50;
+        }
+
+        .sub-text {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+
+        .success {
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-box">
+            <div class="logo">
+                <img src="/images/logo.png" alt="MediWise AI">
+            </div>
+            <h2>Create an Account</h2>
+            <p class="sub-text">Join MediWise AI – Get diagnosis from your health reports</p>
+
+            <form th:action="@{/signup}" method="post">
+            <input type="text" name="firstName" placeholder="First Name" required>
+            <input type="text" name="lastName" placeholder="Last Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+                
+                <input type="text" name="role" placeholder="Role" required>
+
+                <button type="submit">Sign Up</button>
+            </form>
+
+            <div class="footer-links">
+                <p>Already have an account? <a th:href="@{/login}">Login</a></p>
+            </div>
+
+            <div th:if="${error}" class="error">
+    <p th:text="${error}"></p>
+  </div>
+        </div>
+    </div>
+</body>
+</html>

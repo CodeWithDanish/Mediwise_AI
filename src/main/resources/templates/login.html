@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MediWise AI - Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f8ff;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .logo img {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin: 10px 0;
+            color: #2c3e50;
+        }
+
+        .sub-text {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+
+        .logout-msg {
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo">
+                <img src="/images/logo.png" alt="MediWise AI">
+            </div>
+            <h2>Welcome to MediWise AI</h2>
+            <p class="sub-text">AI-powered medical report analysis</p>
+
+           <form th:action="@{/login}" method="post">
+    <input type="text" name="username" placeholder="Enter username"/>
+    <input type="password" name="password" placeholder="Enter Password"/>
+    <button type="submit">Login</button>
+</form>
+
+            <div class="footer-links">
+                <p>Don't have an account? <a th:href="@{/signup}">Sign up</a></p>
+            </div>
+
+            <div th:if="${error}" class="error">
+    <p th:text="${error}"></p>
+  </div>
+           
+        </div>
+    </div>
+</body>
+</html>
